@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowRight, ArrowUpRight, Plus } from "lucide-react";
 import styles from "./concept.module.css";
-import { getHeroMotion } from "./heroMotion";
+import { getHeroMotion, getMobileHeartProgress } from "./heroMotion";
 import { faqItems } from "@/components/FAQWidget/faqData";
 import PracticeNavigation from "@/components/PracticeNavigation/PracticeNavigation";
 import ParallaxBackground from "@/components/ParallaxBackground/ParallaxBackground";
@@ -56,7 +56,9 @@ function FAQItem({ question, answer, defaultOpen }: { question: string; answer: 
 export default function Concept() {
   const motionRoot = useScrollMotion();
   const story = useRef<HTMLElement>(null);
+  const specimen = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
+  const [heartProgress, setHeartProgress] = useState(0);
   const [reduced, setReduced] = useState(false);
   const [ready, setReady] = useState(false);
   const onReady = useCallback(() => setReady(true), []);
@@ -68,9 +70,17 @@ export default function Concept() {
     const update = () => {
       frame = 0;
       if (!story.current) return;
-      if (preference.matches || window.innerWidth <= 760) { setProgress(0); return; }
+      if (preference.matches) { setProgress(0); setHeartProgress(0); return; }
+      if (window.innerWidth <= 760) {
+        const rect = specimen.current?.getBoundingClientRect();
+        setProgress(0); // Keep the mobile headline and chapter label steady.
+        setHeartProgress(rect ? getMobileHeartProgress(rect.top, rect.height, window.innerHeight) : 0);
+        return;
+      }
       const rect = story.current.getBoundingClientRect();
-      setProgress(Math.max(0, Math.min(1, -rect.top / Math.max(1, rect.height - window.innerHeight))));
+      const nextProgress = Math.max(0, Math.min(1, -rect.top / Math.max(1, rect.height - window.innerHeight)));
+      setProgress(nextProgress);
+      setHeartProgress(nextProgress);
     };
     const requestUpdate = () => { if (!frame) frame = requestAnimationFrame(update); };
     updatePreference();
@@ -114,9 +124,9 @@ export default function Concept() {
               <a className={styles.primaryLink} href="#practice">Our care <ArrowUpRight size={18} /></a>
             </div>
 
-            <div className={styles.specimen} role="img" aria-label={chapter === 0 ? "Three-dimensional sculptural heart, external view" : "Closer external view of the sculptural heart"}>
+            <div ref={specimen} className={styles.specimen} role="img" aria-label={chapter === 0 ? "Three-dimensional sculptural heart, external view" : "Closer external view of the sculptural heart"}>
               <div className={styles.halo} />
-              <SceneBoundary><HeartScene progress={progress} reduced={reduced} onReady={onReady} />
+              <SceneBoundary><HeartScene progress={heartProgress} reduced={reduced} onReady={onReady} />
                 {!ready && <span className={styles.loading}>Preparing the heart study…</span>}
               </SceneBoundary>
               <span className={styles.specimenLabel}><Plus size={14} /> {chapter === 0 ? "01 / THE WHOLE HEART" : "02 / A CLOSER PERSPECTIVE"}</span>
