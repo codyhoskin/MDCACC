@@ -1,0 +1,80 @@
+.page { min-height: 100svh; }
+.main { padding: 130px 8% 0; }
+.breadcrumb { display: flex; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid var(--line); padding: 18px 0; font-size: .875rem; color: var(--muted); }
+.breadcrumb a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
+.breadcrumb > span { font-size: .75rem; letter-spacing: .12em; }
+.appointmentLayout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-items: start; gap: clamp(36px, 6vw, 100px); padding: 40px 0 72px; }
+.intro { padding-top: 8px; }
+.intro > p:first-child { color: var(--muted); }
+.intro h1 { font-size: clamp(2.75rem, 4.8vw, 5rem); line-height: 1.06; letter-spacing: -.06em; font-weight: 450; margin-top: 22px; }
+.intro h1 span { color: var(--brand-blue); }
+.description { font-size: 1rem; line-height: 1.8; color: var(--muted) !important; max-width: 360px; margin-top: 26px; }
+.introStatus { display: inline-flex; align-items: center; gap: 9px; color: var(--muted); font-size: .875rem; margin-top: 22px; }
+.introStatus > span { width: 6px; height: 6px; background: #7d8da0; border-radius: 50%; }
+.treatmentImage { max-width: 400px; margin: 36px 0 0; }
+.treatmentImage img { display: block; width: 100%; height: 220px; object-fit: cover; object-position: center 35%; border-radius: 2px; filter: saturate(.65); }
+.treatmentImage figcaption { font-size: .75rem; color: var(--muted); margin-top: 12px; }
+.calendarCard { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; box-shadow: 0 18px 55px rgb(24 46 69 / 5%); overflow: hidden; }
+.calendarIntro { padding: 28px 32px; background: var(--silver); border-bottom: 1px solid var(--line); }
+.calendarIntro > p:first-child { color: var(--muted); }
+.calendarTitle { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-top: 10px; }
+.calendarTitle h2 { font-size: 1.5rem; font-weight: 500; line-height: 1.3; letter-spacing: -.035em; }
+.calendarTitle svg { color: var(--accent); flex-shrink: 0; }
+.calendarIntro > p:last-child { color: var(--muted); font-size: .875rem; line-height: 1.6; margin-top: 8px; }
+.calendarBody { padding: 28px 32px; }
+.monthControls { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 20px; }
+.monthControls h3 { font-size: 1.125rem; font-weight: 550; }
+.monthControls > div { display: flex; gap: 8px; }
+.monthControls button { border: 0; background: var(--button-bg); color: #fff; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 2px; cursor: pointer; }
+.monthControls button:hover:not(:disabled) { background: var(--button-hover); }
+.monthControls button { transition: background-color 220ms ease, transform 220ms var(--ease-out); }
+.monthControls button:active:not(:disabled) { transform: scale(.94); }
+.monthControls button:disabled { background: var(--button-disabled); cursor: not-allowed; }
+.monthControls button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  .monthControls button { transition: none; }
+  .monthControls button:active:not(:disabled) { transform: none; }
+}
+.calendarGrid { min-height: 330px; }
+.calendarGrid table { width: 100%; table-layout: fixed; border-collapse: collapse; }
+.calendarGrid th { color: var(--muted); font-size: .75rem; font-weight: 500; height: 30px; }
+.calendarGrid abbr { text-decoration: none; }
+.calendarGrid td { height: 48px; padding: 3px; text-align: center; }
+.calendarGrid .date { border: 1px solid transparent; border-radius: 2px; width: 100%; height: 42px; color: var(--date-text); background: var(--date-bg); font-family: inherit; font-size: .875rem; font-variant-numeric: tabular-nums; cursor: not-allowed; opacity: 1; }
+.calendarGrid .past { background: transparent; color: var(--date-past); }
+.calendarGrid .today { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.calendarLoading { color: var(--muted); padding: 120px 0; text-align: center; font-size: .875rem; }
+.calendarLegend { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 14px 0 22px; color: var(--muted); font-size: .75rem; }
+.calendarLegend > span { display: inline-flex; align-items: center; gap: 8px; }
+.calendarLegend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; border: 1px solid var(--line-strong); background: var(--date-bg); }
+.bookingStatus { display: flex; gap: 14px; padding: 18px; background: var(--notice-bg); border-left: 2px solid var(--brand-blue); }
+.bookingStatus svg { flex-shrink: 0; color: var(--accent); margin-top: 3px; }
+.bookingStatus h3 { font-size: 1rem; font-weight: 550; }
+.bookingStatus p { font-size: .875rem; line-height: 1.65; margin-top: 5px; color: var(--muted); }
+.bookingNote { color: var(--muted) !important; font-size: .75rem; line-height: 1.7; margin-top: 16px; }
+.returnRow { border-top: 1px solid var(--line); padding: 28px 0; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.returnRow p { color: var(--muted); font-size: 1rem; line-height: 1.7; }
+.returnRow a { margin-top: 0; flex-shrink: 0; }
+@media (max-width: 1000px) {
+  .main { padding-left: 6%; padding-right: 6%; }
+  .appointmentLayout { gap: 32px; }
+  .calendarIntro, .calendarBody { padding: 24px; }
+  .calendarTitle h2 { font-size: 1.25rem; }
+  .calendarTitle > svg { display: none; }
+}
+@media (max-width: 760px) {
+  .main { padding-top: 104px; }
+  .breadcrumb > span { display: none; }
+  .appointmentLayout { grid-template-columns: 1fr; padding-top: 20px; gap: 36px; }
+  .intro h1 { font-size: clamp(2.75rem, 10vw, 4rem); }
+  .description { max-width: 450px; }
+  .treatmentImage { display: none; }
+  .calendarGrid td { padding: 2px; }
+  .returnRow { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+@media (max-width: 380px) {
+  .calendarIntro, .calendarBody { padding: 18px 14px; }
+  .monthControls { gap: 10px; }
+  .monthControls h3 { font-size: 1rem; }
+  .calendarGrid td { padding: 1px; }
+}

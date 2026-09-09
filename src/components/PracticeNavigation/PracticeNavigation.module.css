@@ -1,0 +1,30 @@
+.tools { display: flex; align-items: center; gap: 24px; }
+.desktop.desktop { display: flex; align-items: center; gap: 24px; }
+.desktop a, .menu a { white-space: nowrap; }
+.desktop a[aria-current="page"], .menu a[aria-current="page"] { color: var(--accent); text-decoration: underline; text-underline-offset: 6px; }
+.desktop a.booking, .menu a.booking { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 16px; background: var(--button-bg); border-radius: 2px; color: #fff; }
+.desktop a.booking:hover, .menu a.booking:hover { background: var(--button-hover); color: #fff; }
+.desktop a.booking:active, .menu a.booking:active { transform: scale(.985); }
+.menu { display: none; }
+.menu summary { display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 44px; min-height: 44px; padding: 10px; border: 1px solid var(--line-strong); border-radius: 2px; background: var(--surface); color: var(--ink); font-size: .875rem; cursor: pointer; list-style: none; }
+.menu summary::-webkit-details-marker { display: none; }
+.menu summary { transition: background-color 220ms ease, border-color 220ms ease; }
+.menu summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.menu[open] summary { border-color: var(--accent); background: var(--silver); }
+.menu.menu nav { position: absolute; top: 100%; left: 5%; right: 5%; display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 12px 20px; border: 1px solid var(--line); border-radius: 2px; background: var(--surface); box-shadow: 0 16px 36px rgb(0 0 0 / 15%); max-height: 70svh; overflow-y: auto; }
+.menu:not([open]) nav { display: none; }
+.menu.menu nav { max-height: min(70svh, calc(100dvh - var(--practice-header-height, 112px) - 16px)); overscroll-behavior: contain; }
+.menu nav a { display: flex; align-items: center; min-height: 48px; padding: 12px 0; font-size: 1rem; }
+.menu nav a + a { border-top: 1px solid var(--line); }
+.menu nav a.booking { margin: 8px 0; border-top: 0; }
+@media (max-width: 1100px) {
+  .desktop.desktop { display: none; }
+  .tools { gap: 8px; flex-shrink: 0; }
+  .menu { display: block; }
+}
+@media (max-width: 760px) { .menu.menu nav { left: 6%; right: 6%; } }
+@media (max-width: 400px) { .menu summary span { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .menu summary { transition: none; }
+  .desktop a.booking:active, .menu a.booking:active { transform: none; }
+}

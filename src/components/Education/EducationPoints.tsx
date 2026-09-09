@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
 import styles from "./EducationPoints.module.css";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { FaHeartbeat, FaUserMd, FaProcedures, FaStethoscope } from "react-icons/fa";
 import TitleSection from "../Titles/TitleSection";
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: (i: number) => ({
     opacity: 1,

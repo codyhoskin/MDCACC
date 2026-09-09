@@ -15,6 +15,10 @@
 
 # next.js
 /.next/
+/.next
+/.next-before-navigation-recovery-2026-09-09/
+/public/robots.txt
+/public/sitemap*.xml
 /out/
 
 # production

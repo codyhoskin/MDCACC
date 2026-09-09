@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Script from "next/script";
 
 interface MovieViewingComponentProps {
   videoId: string;
@@ -62,8 +63,10 @@ const MovieViewingComponent: React.FC<MovieViewingComponentProps> = ({
         marginBottom: "80px",
       }}
     >
-      <script
+      <Script
+        id={`video-structured-data-${videoId}`}
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 

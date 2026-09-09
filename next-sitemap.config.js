@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-    siteUrl: '', // Replace with your real domain
-    generateRobotsTxt: true,           // Also generate robots.txt
-  };
-  
+  siteUrl: process.env.SITE_URL || 'https://mdcardiacanesthesia.com',
+  generateRobotsTxt: true,
+  exclude: ['/concept'],
+};

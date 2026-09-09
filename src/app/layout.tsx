@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import ThemeProviderWrapper from "../util/ThemeProviderWrapper";
 import "./globals.css";
-import Header from "@/components/Header/Header";
+import SiteChrome from "@/components/SiteChrome";
 //import Footer from "@/components/Footer/Footer";
 import localFont from "next/font/local";
-import Footer2 from "@/components/Footer/Footer2";
+import { siteUrl, siteName, siteDescription } from "@/util/site";
 
 
 const interFontBold = localFont({
@@ -23,27 +23,23 @@ const interFontThin = localFont({
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mdcacc.netlify.app"),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "MDCACC",
-    template: "%s | title",
+    default: siteName,
+    template: "%s | MDCACC",
   },
-  description: "",
-  keywords: ["", "", "", "", "", "", ""],
-  authors: [{ name: "", url: "" }],
+  description: siteDescription,
   openGraph: {
-    title: "",
-    description: "",
-    url: "",
-    siteName: "",
+    title: siteName,
+    description: siteDescription,
+    url: "/",
+    siteName,
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://mdcacc.netlify.app/images/mainLogo.png",
-        width: 1200,
-        height: 630,
-        alt: "",
+        url: "/images/mainLogo.png",
+        alt: siteName,
       },
     ],
   },
@@ -51,14 +47,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MDCACC",
     description: "Cardiac Anesthesia and Critical Care",
-    images: [""],
+    images: ["/images/mainLogo.png"],
     creator: "@mdcacc",
   },
   icons: {
     icon: "/favicon.ico",
   },
   alternates: {
-    canonical: "https://mdcacc.netlify.app",
+    canonical: "/",
   },
 };
 
@@ -68,12 +64,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${interFontBold.variable} ${interFontThin.variable}`}>
+    <html
+      lang="en"
+      className={`${interFontBold.variable} ${interFontThin.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         <ThemeProviderWrapper>  
-          <Header />        
-          {children}
-          <Footer2 />
+          <SiteChrome>{children}</SiteChrome>
         </ThemeProviderWrapper>
       </body>
     </html>

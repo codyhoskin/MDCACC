@@ -1,43 +1,21 @@
-"use client";
-import React from "react";
-import styles from "./page.module.css";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
+import type { Metadata } from "next";
+import Botox from "./Botox";
+import { siteName } from "@/util/site";
 
-const BotoxPage: React.FC = () => {
-  return (
-    <section className={styles.botoxSection}>
-      <motion.div
-        className={styles.content}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        <div className={styles.text}>
-          <h1>Botox Treatments</h1>
-          <p>
-            Refresh your appearance and reduce fine lines with our expert Botox services. 
-            Our medical professionals provide safe, personalized care to help you look and feel your best.
-          </p>
-          <Link href="/" className={styles.ctaButton}>
-            Book Your Appointment →
-          </Link>
-        </div>
-
-        <div className={styles.imageWrapper}>
-          <Image
-            src="/images/botox.png"
-            alt="Botox procedure"
-            width={400}
-            height={400}
-            className={styles.image}
-          />
-        </div>
-      </motion.div>
-    </section>
-  );
+export const metadata: Metadata = {
+  title: { absolute: "Botox Consultations & Treatments — MDCACC" },
+  description: "Botox consultations and treatments at MD Cardiac Anesthesia & Critical Care. View appointment availability.",
+  alternates: { canonical: "/botox" },
+  openGraph: {
+    title: "Botox Consultations & Treatments — MDCACC",
+    description: "Botox consultations and treatments at MD Cardiac Anesthesia & Critical Care. View appointment availability.",
+    url: "/botox",
+    siteName,
+    type: "website",
+    images: [{ url: "/images/mainLogo.png", alt: siteName }],
+  },
 };
 
-export default BotoxPage;
+export default function BotoxPage() {
+  return <Botox />;
+}

@@ -92,6 +92,7 @@ const TitleOverlay: React.FC<TitleOverlayProps> = ({ scrollOffsetRef }) => {
             alt="Logo Overlay"
             width={320}
             height={70}
+            loading="eager"
           />
         <div style={{padding: "20px"}}>
         <TitleSection title="Your Critical Care Experts" align="left"/>

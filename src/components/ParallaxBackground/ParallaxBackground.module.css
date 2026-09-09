@@ -1,0 +1,5 @@
+.layer { position: absolute; left: 0; right: 0; pointer-events: none; transform: translate3d(0, 0, 0); }
+.image { object-fit: cover; }
+@media (prefers-reduced-motion: reduce) {
+  .layer { transform: none !important; will-change: auto !important; }
+}

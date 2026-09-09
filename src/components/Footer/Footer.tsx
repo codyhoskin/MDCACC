@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type MotionProps } from "framer-motion";
 import { MdLocationOn } from "react-icons/md";
 import SocialLinks from "../SocialLinks/SocialLinks";
 import styles from "./Footer.module.css";
 
 // Animation configuration for Framer Motion
-const floatUp = {
+const floatUp: MotionProps = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
   transition: { duration: 0.6, ease: "easeOut" },
