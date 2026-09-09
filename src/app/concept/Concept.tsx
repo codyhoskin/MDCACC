@@ -16,7 +16,7 @@ import { useScrollMotion } from "@/components/ScrollMotion/useScrollMotion";
 const HeartScene = dynamic(() => import("./HeartScene"), { ssr: false });
 
 const heroMessages = [
-  { eyebrow: "ANESTHESIA FOR CARDIAC SURGERY", lines: ["Cardiac", "anesthesia.", "Critical care."], description: "Anesthesia for heart surgery and intensive care for critically ill patients." },
+  { eyebrow: "ANESTHESIA FOR CARDIAC SURGERY", lines: ["Cardiac", "anesthesia.", "& Critical care."], description: "Anesthesia for heart surgery and intensive care for critically ill patients." },
   { eyebrow: "BEFORE, DURING & AFTER SURGERY", lines: ["Assessment.", "Anesthesia.", "Recovery."], description: "From preoperative assessment through anesthesia and postoperative recovery." },
 ];
 
